@@ -251,7 +251,8 @@ Class diagrams: https://github.com/Mingzix/cst8288Final/blob/main/UML%20class.pn
 
 **Data Architecture**
 
-ERD :
+ERD : ![UML class](https://github.com/Mingzix/cst8288Final/blob/main/erd.png)
+https://github.com/Mingzix/cst8288Final/blob/main/erd.png
 
 
 **Testing Model** 
