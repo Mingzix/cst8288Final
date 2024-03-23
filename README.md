@@ -285,8 +285,7 @@ https://github.com/Mingzix/cst8288Final/blob/main/erd.png
   
   Class diagram: https://github.com/Mingzix/cst8288Final/blob/main/UML%20class.png 
   
-  Database ERD: 
-
+  Database ERD: https://github.com/Mingzix/cst8288Final/blob/main/erd.png
  
 
  
