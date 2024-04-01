@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Food Waste Deduction Platform</title>
+</head>
+<body>
+<a href="welcome">Welcome to Food Waste Deduction Platform</a>
+<form action="LoginServlet" method="post">
+    <p>Enter your name: <input type="text" name="name"></p>
+    <p>Enter your password: <input type="password" name="password"></p>
+    <p><input type="submit" value="Sign In"></p>
+</form>
+<form action="RegisterServlet" method="post">
+    <p>Don't have an account? Sign up now!</p>
+    <p>Enter your name: <input type="text" name="name"></p>
+    <p>Enter your email: <input type="email" name="email"></p>
+    <p>Enter your password: <input type="password" name="password"></p>
+    <p>Select user type: 
+        <select name="userType">
+            <option value="retailer">Retailer</option>
+            <option value="consumer">Consumer</option>
+            <option value="charitableOrganization">Charitable Organization</option>
+        </select>
+    </p>
+    <p><input type="submit" value="Sign Up"></p>
+</form>
+</body>
+</html>
