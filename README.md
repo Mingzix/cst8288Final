@@ -283,9 +283,9 @@ https://github.com/Mingzix/cst8288Final/blob/main/erd.png
 
 **List of Figures**
   
-  Class diagram: https://github.com/Mingzix/cst8288Final/blob/main/UML%20class.png 
+  Class diagram: https://github.com/Mingzix/cst8288Final/blob/main/FoodWasteDeduction/src/main/docs/UML%20class.png
   
-  Database ERD: https://github.com/Mingzix/cst8288Final/blob/main/erd.png
+  Database ERD: https://github.com/Mingzix/cst8288Final/blob/main/FoodWasteDeduction/src/main/docs/erd.png
  
 
  

@@ -1,0 +1,67 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+    form {
+      width: 100%;
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+<p>${msg}</p>
+<form action="FoodAddServlet" method="post">
+  <label for="fname">Name:</label>
+  <input type="text" id="fname" name="fname" required>
+
+  <label for="expiration">Expiration:</label>
+  <input type="date" id="expiration" name="expiration" required>
+
+  <label for="price">Price:</label>
+  <input type="number" id="price" name="price" step="0.01" required>
+
+  <label for="inventory">Inventory:</label>
+  <input type="number" id="inventory" name="inventory" required>
+
+  <label for="discount">Discount:</label>
+  <input type="number" id="discount" name="discount" step="0.01" required>
+
+  <label for="foodType">Food Type:</label>
+  <select id="foodType" name="ftid">
+    <c:forEach var="type" items="${foodTypeList}">
+      <option value="${type.id}">${type.name}</option>
+    </c:forEach>
+  </select>
+
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>
