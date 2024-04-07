@@ -15,15 +15,17 @@ CREATE TABLE `food` (
   `discount` double DEFAULT NULL,
   `ftid` int(11) DEFAULT NULL,
   `is_donate` int(11) DEFAULT '0',
+  `store_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`fid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `food` */
 
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (1,'beaf','2024-04-09','12',7,1,5,1);
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (2,'coco','2024-04-20','19',9,0.7,3,0);
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (3,'fish','2024-04-13','5',10,1,5,0);
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (4,'rice','2024-04-13','6',10,1,2,0);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`,`store_id`) values (1,'beaf','2024-04-09','12',7,1,5,1,1);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`,`store_id`) values (2,'coco','2024-04-20','19',9,0.7,3,0,1);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`,`store_id`) values (3,'fish','2024-04-13','5',10,1,5,0,2);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`,`store_id`) values (4,'rice','2024-04-13','6',10,1,2,0,2);
+
 
 /*Table structure for table `food_type` */
 
@@ -51,7 +53,7 @@ CREATE TABLE `orders` (
   `money` decimal(8,2) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   PRIMARY KEY (`oid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+)ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `orders` */
 
@@ -61,6 +63,34 @@ insert  into `orders`(`oid`,`uid`,`fid`,`money`,`num`) values (4,1,2,'19.00',1);
 insert  into `orders`(`oid`,`uid`,`fid`,`money`,`num`) values (5,1,2,'19.00',1);
 insert  into `orders`(`oid`,`uid`,`fid`,`money`,`num`) values (6,1,2,'26.60',2);
 insert  into `orders`(`oid`,`uid`,`fid`,`money`,`num`) values (7,3,1,NULL,1);
+
+/*Table structure for table `store` */
+
+
+
+CREATE TABLE `store` (
+
+  `store_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'No',
+
+  `store_name` varchar(50) DEFAULT NULL COMMENT 'name',
+
+  `city` varchar(50) DEFAULT NULL COMMENT 'city',
+
+  `uid` int(11) DEFAULT NULL COMMENT 'Retailer id',
+
+  PRIMARY KEY (`store_id`)
+
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
+
+/*Data for the table `store` */
+
+
+
+insert  into `store`(`store_id`,`store_name`,`city`,`uid`) values (1,'Store 1','Ottawa',2);
+
+insert  into `store`(`store_id`,`store_name`,`city`,`uid`) values (2,'Store 2','Toronto',4);
 
 /*Table structure for table `subscribe` */
 
@@ -82,11 +112,17 @@ CREATE TABLE `user` (
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`uid`,`name`,`email`,`password`,`user_type`) values (1,'aaa','zzyy25143@163.com','123','consumer');
-insert  into `user`(`uid`,`name`,`email`,`password`,`user_type`) values (2,'bbb','bbb@111.com','123','retailer');
-insert  into `user`(`uid`,`name`,`email`,`password`,`user_type`) values (3,'ccc','ccc@11.com','123','organization');
+
+insert  into `user`(`uid`,`name`,`email`,`password`,`user_type`,`last_login`) values (1,'consumer','consumer@163.com','123','consumer','2024-04-07 14:16:01');
+
+insert  into `user`(`uid`,`name`,`email`,`password`,`user_type`,`last_login`) values (2,'retailer','retailer@111.com','123','retailer','2024-04-07 14:09:15');
+
+insert  into `user`(`uid`,`name`,`email`,`password`,`user_type`,`last_login`) values (3,'org','org@11.com','123','organization','2024-04-07 14:07:53');
+
+insert  into `user`(`uid`,`name`,`email`,`password`,`user_type`,`last_login`) values (4,'ddd','ccc@11.com','123','retailer','2024-04-07 14:09:49');
