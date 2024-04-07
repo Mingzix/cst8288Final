@@ -65,7 +65,7 @@ public class FoodAddServlet extends HttpServlet {
             resp.sendRedirect("FoodListServlet");
         }else{
             request.setAttribute("msg","add fail");
-            request.getRequestDispatcher("FoodTypeListServlet").forward(request,resp);
+            request.getRequestDispatcher("FoodListServlet").forward(request,resp);
         }
     }
 }
