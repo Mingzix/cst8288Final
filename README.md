@@ -1,59 +1,50 @@
-# cst8288 Final project
-# High-Level Design For Food Wate Reduce Platform 
+# CST8288 Final Project
+## High-Level Design For Food Waste Reduce Platform 
 
 
-Team members: 
+**Team members:**
 
-  Tao Chen
+- Tao Chen
   
-  Shuting Wang 
+- Shuting Wang 
   
-  Mingzi Xu 
+- Mingzi Xu 
   
-  Zoe Zhou
+- Zoe Zhou
 
  
 CST8288_030 OOP with Design Patterns 2024 Winter Term 
 ​​ 
 
+## Version History
 
-**Version History**
+| Version # | Author | Modified Time |
+| - | - | - |
+| Version 1.0 | Mingzi Xu | 2024/03/15 |
+| Version 1.2 | Zoe Zhou | 2024/03/18 |
+| Version 1.3 | Tao Chen | 2024/03/18 |
+| Version 1.4 | Shuting Wang | 2024/03/18 |
+| Version 2.0 | Zoe Zhou | 024/03/21 |
+| Version 2.1 | Shuting Wang | 2024/03/21 |
+| Version 2.2 | Tao Chen | 2024/03/22 |
+| Version 2.3 | Mingzi Xu  | 2024/03/22 |
 
-**Version #**  **Author**   **Modified Time**  
-
-  Version 1.0 	Mingzi Xu 		2024/03/15  
-  
-  Version 1.2 	Zoe Zhou 		  2024/03/18  
-  
-  Version 1.3 	Tao Chen 		  2024/03/18  
-  
-  Version 1.4 	Shuting Wang 	2024/03/18  
-  
-  Version 2.0 	Zoe Zhou 		  2024/03/21  
-  
-  Version 2.1 	Shuting Wang 	2024/03/21  
-  
-  Version 2.2	  Tao Chen 		  2024/03/22  
-  
-  Version 2.3 	Mingzi Xu 		2024/03/22  
-
-
-**Introduction**  
+## Introduction  
 
   This platform is dedicated to reducing food waste. Its goal is to tackle the global issue of food waste by offering a solution that links food retailers, consumers, and charitable organizations. A food waste reduction platform plays a crucial role in advancing sustainability, alleviating hunger, and fostering more robust food systems. It fosters cooperation among stakeholders throughout the food supply chain and promotes unified efforts to confront one of the most significant challenges of our era. 
 
 
-**Targeted Audience** 
+## Targeted Audience
 
-    Developers: Developers need to ensure the platform runs smoothly. 
+- Developers: Developers need to ensure the platform runs smoothly. 
     
-    Consumers:  Food consumers want to purchase discounted food items, lower their cost of living and contribute to reducing food waste. 
+- Consumers:  Food consumers want to purchase discounted food items, lower their cost of living and contribute to reducing food waste. 
     
-    Project managers: Project managers need to ensure the platform addresses the needs of all stakeholders and maintains a positive impact on food waste reduction and community welfare. 
+- Project managers: Project managers need to ensure the platform addresses the needs of all stakeholders and maintains a positive impact on food waste reduction and community welfare. 
     
-    Retailers:  Retailers are interested in managing their surplus food efficiently to reduce waste and potentially gain benefits by selling them at a discount price or by donating them for public goodwill. 
+- Retailers:  Retailers are interested in managing their surplus food efficiently to reduce waste and potentially gain benefits by selling them at a discount price or by donating them for public goodwill. 
     
-    Charitable organizations: Charitable organizations are interested in accessing surplus food to distribute to those in need, reducing their operational costs. 
+- Charitable organizations: Charitable organizations are interested in accessing surplus food to distribute to those in need, reducing their operational costs. 
 
 
 **Scope**
@@ -278,8 +269,6 @@ https://github.com/Mingzix/cst8288Final/blob/main/erd.png
  
 **References**
 
-
- 
 
 **List of Figures**
   
