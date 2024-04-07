@@ -48,6 +48,7 @@
         }
 
     </style>
+    <!-- https://coderanch.com/t/54978/frameworks/TAB-JSP -->
     <script>
         function openForm(evt, formName) {
             var i, tabcontent, tablinks;
