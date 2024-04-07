@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FoodDao {
 
-    public List<FoodVo> getFoodList(String userType,int uid)
+    public List<FoodVo> getFoodList(String userType,int uid, String storeId)
     {
         List<FoodVo> foods = new ArrayList();
         Connection connection;
@@ -25,12 +25,16 @@ public class FoodDao {
             connection = JDBCUtils.getConnection();
 
             // Prepare the SQL query
-            String sql = "SELECT * FROM food f,food_type ft where f.ftid=ft.id";
+            String sql = "";
             if("organization".equals(userType) ){
-                sql += " and f.is_donate=?";
+                sql = "SELECT * FROM food f,food_type ft where f.ftid=ft.id and f.is_donate=?";
             }else if("consumer".equals(userType)){
                 sql = "SELECT *,IF(s.sid IS NOT NULL AND s.uid=?,1,0) is_subscribe FROM food f INNER JOIN food_type ft ON f.ftid=ft.id " +
-                        "LEFT JOIN subscribe s ON f.fid=s.fid where f.is_donate=?";
+                        "LEFT JOIN subscribe s ON f.fid=s.fid where f.is_donate=? and f.store_id=?";
+            }else if("retailer".equals(userType)){
+                sql="SELECT f.*,ft.name " +
+                        "FROM food f,store s,food_type ft " +
+                        "WHERE f.store_id=s.store_id AND ft.id=f.ftid AND s.uid=?";
             }
             pstmt = connection.prepareStatement(sql);
             if ("organization".equals(userType) ){
@@ -38,6 +42,9 @@ public class FoodDao {
             }else if ("consumer".equals(userType)){
                 pstmt.setInt(1,uid);
                 pstmt.setInt(2,0);
+                pstmt.setString(3,storeId);
+            }else if("retailer".equals(userType)){
+                pstmt.setInt(1,uid);
             }
 
             rs = pstmt.executeQuery();
