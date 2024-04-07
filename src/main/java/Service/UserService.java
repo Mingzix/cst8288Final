@@ -2,6 +2,8 @@ package Service;
 
 import dao.UserDao;
 import food.User;  
+import java.sql.Connection;
+import java.sql.SQLException; 
   
 public class UserService {  
       
@@ -17,6 +19,10 @@ public class UserService {
       
     public User getUserByNameAndPassword(String name, String password){
         return userDao.getUserByNameAndPassword(name, password);  
-    }     
+    }  
+      
+    public void updateLastTime(int uid) {
+        userDao.updateLastTime(uid);
+    }
 
 }

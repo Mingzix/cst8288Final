@@ -25,8 +25,8 @@ public class FoodService {
         userDao = new UserDao();
     }
 
-    public List<FoodVo> getFoodList(String userType,int uid){
-        return foodDao.getFoodList(userType,uid);
+    public List<FoodVo> getFoodList(String userType, int uid, String storeId){
+        return foodDao.getFoodList(userType,uid,storeId);
     }
 
     public FoodVo getFoodById(int fid){
@@ -36,9 +36,12 @@ public class FoodService {
     public int updateFood(Food food){
         FoodVo foodVo = foodDao.getFoodById(food.getFid());
         int result = foodDao.updateFood(food);
-        if(foodVo.getInventory()==0 && food.getInventory()>0 && result>0){
-            
+        FoodVo foodVo2 = foodDao.getFoodById(food.getFid());
+        if(foodVo.getIsExpired().equals("no") && foodVo2.getIsExpired().equals("yes") && result>0){
+            //send email
+            //check subscriber
             List<Subscribe> subscribeList = subscribeDao.getSubscribesByFid(food.getFid());
+            //get user information
             List<Integer> uids = new ArrayList();
             for(Subscribe subscribe:subscribeList){
                 uids.add(subscribe.getUid());
@@ -48,7 +51,8 @@ public class FoodService {
             for (User user : userList) {
                 set.add(user.getEmail());
             }
-           
+            MailUtils.sendEmail(set,"Food subscription reminder","The food "+foodVo.getFname()+" you subscribed to has been set as expired, go buy now!");
+            
             subscribeDao.deleteSubscribesByFid(food.getFid());
         }
         return result;
