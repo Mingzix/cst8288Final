@@ -25,7 +25,7 @@ public class Orders {
         this.num = num;
     }
 
-    
+    // 构造方法
     public Orders() {
     }  
   
@@ -37,7 +37,7 @@ public class Orders {
         this.num = num;
     }  
   
-    // Getter and Setter  
+    // Getter 和 Setter 方法  
     public int getOid() {  
         return oid;  
     }  
@@ -70,7 +70,7 @@ public class Orders {
         this.money = money;  
     }  
   
-    // toString 
+    // toString 方法，用于调试和日志记录  
     @Override  
     public String toString() {  
         return "Order{" +  
