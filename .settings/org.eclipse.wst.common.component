@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="cst8288Final">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/build/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/demo/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/generated/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/legacy/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/main/core-api/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/main/core-impl/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/main/protocol-impl/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/main/user-api/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/main/user-impl/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/FoodWasteDeduction/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.3.0/src/test/java"/>
+        <property name="context-root" value="cst8288Final"/>
+        <property name="java-output-path" value="/cst8288Final/bin"/>
+    </wb-module>
+</project-modules>
