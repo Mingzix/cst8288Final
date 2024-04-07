@@ -13,6 +13,7 @@ public class Food {
     private int ftid;
 
     private int isDonate;
+    private int storeId;
 
     public int getIsDonate() {
         return isDonate;
@@ -36,8 +37,8 @@ public class Food {
         this.discount = discount;  
         this.ftid = ftid;
     }  
-  
-    // Getter and  Setter
+
+	// Getter and  Setter
     public int getFid() {  
         return fid;  
     }  

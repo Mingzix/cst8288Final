@@ -1,11 +1,15 @@
 package dao;
 
-import food.Orders;
-import utils.JDBCUtils;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.sql.*;
-import java.util.ArrayList;  
-import java.util.List;  
+import food.Orders;
+import utils.JDBCUtils;  
   
 public class OrderDao  {
     private static final String ADD_ORDER_SQL = "INSERT INTO orders(oid, uid, fid, money,num) VALUES (?, ?, ?, ?,?)";
@@ -21,7 +25,7 @@ public class OrderDao  {
   
             pstmt.setInt(1, orders.getOid());
             pstmt.setInt(2, orders.getUid() ); 
-            pstmt.setInt(3, orders.getFid() ); 
+            pstmt.setInt(3, orders.getFid() );
             pstmt.setBigDecimal(4, orders.getMoney());
             pstmt.setInt(5, orders.getNum());
 

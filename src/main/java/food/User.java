@@ -1,11 +1,20 @@
 package food;
 
+import java.sql.Timestamp;
+
 public class User {
     private int uid;  
     private String name;  
     private String email;  
     private String password;  
     private String userType;
+    private String lastLogin;
+ public String getLastLogin() {
+        return lastLogin;
+    }
+public void setLastLogin(String lastLogin) {
+        this.lastLogin = lastLogin;
+    }
 
 public User(String name, String email, String password, String userType) {
     this.name = name;
