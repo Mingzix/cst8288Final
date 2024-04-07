@@ -1,5 +1,5 @@
 
-
+DROP DATABASE IF EXISTS fwdb;
 CREATE DATABASE `fwdb` ;
 
 USE `fwdb`;
@@ -20,10 +20,10 @@ CREATE TABLE `food` (
 
 /*Data for the table `food` */
 
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (1,'beaf','2024-04-09','12',7,1,2,1);
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (2,'coco','2024-04-20','19',9,0.7,1,0);
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (3,'fish','2024-04-13','5',10,1,1,0);
-insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (4,'rice','2024-04-13','6',10,1,1,0);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (1,'beaf','2024-04-09','12',7,1,5,1);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (2,'coco','2024-04-20','19',9,0.7,3,0);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (3,'fish','2024-04-13','5',10,1,5,0);
+insert  into `food`(`fid`,`fname`,`expiration`,`price`,`inventory`,`discount`,`ftid`,`is_donate`) values (4,'rice','2024-04-13','6',10,1,2,0);
 
 /*Table structure for table `food_type` */
 
@@ -37,6 +37,10 @@ CREATE TABLE `food_type` (
 
 insert  into `food_type`(`id`,`name`) values (1,'drink');
 insert  into `food_type`(`id`,`name`) values (2,'bread');
+insert  into `food_type`(`id`,`name`) values (3,'fruit');
+insert  into `food_type`(`id`,`name`) values (4,'snack');
+insert  into `food_type`(`id`,`name`) values (5,'meat');
+insert  into `food_type`(`id`,`name`) values (6,'vegetables');
 
 /*Table structure for table `orders` */
 
