@@ -51,9 +51,17 @@
   <label for="inventory">Inventory:</label>
   <input type="number" id="inventory" name="inventory" required>
 
-  <label for="discount">Discount:</label>
-  <input type="number" id="discount" name="discount" step="0.01" required>
-
+   <label for="discount" >Discount:</label>
+	<select id="discount" name="discount">
+	  	<option value="1" ${food.discount == 1 ? 'selected' : ''}>No discount</option>
+	  	<option value="0.95" ${food.discount == 0.95 ? 'selected' : ''}>95%</option>
+		<option value="0.9" ${food.discount == 0.9 ? 'selected' : ''}>90%</option>
+		<option value="0.85" ${food.discount == 0.85 ? 'selected' : ''}>85%</option>
+		<option value="0.8" ${food.discount == 0.8 ? 'selected' : ''}>80%</option>
+		<option value="0.75" ${food.discount == 0.85 ? 'selected' : ''}>75%</option>
+	  	<option value="0.7" ${food.discount == 0.8 ? 'selected' : ''}>70%</option>
+	   
+	</select>
   <label for="foodType">Food Type:</label>
   <select id="foodType" name="ftid">
     <c:forEach var="type" items="${foodTypeList}">
