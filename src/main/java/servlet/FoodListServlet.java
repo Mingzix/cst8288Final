@@ -11,7 +11,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+/**
+ * Servlet implementation class FoodListServlet
+ * 
+ * <p>This servlet handles the food list from the database.</p>
+ * 
+ * @version 1.2
+ * @since March 28, 2024
+ */
 public class FoodListServlet extends HttpServlet {
 
     @Override
