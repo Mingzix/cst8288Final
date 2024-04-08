@@ -26,7 +26,7 @@ public class RemoveSubscribeServlet extends HttpServlet {
         if (result<1) {
             req.setAttribute("msg", "remove subscribe fail");
         }
-        resp.sendRedirect("FoodListServlet");
+        resp.sendRedirect("StoreListServlet");
     }
 }
 
