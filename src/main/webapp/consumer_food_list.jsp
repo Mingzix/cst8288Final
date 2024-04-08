@@ -1,3 +1,14 @@
+<!--
+This JSP page displays a list of food items with various attributes such as ID, name, expiration date, price, inventory, discount, type, and subscription status.
+It provides functionality for users to buy items, subscribe to items, and logout.
+
+Key Features:
+- Displaying food list in a table format.
+- Showing user's login information (username and last login time).
+- Providing buttons for subscribing, unsubscribing, and buying items.
+- Using modals for subscription confirmation and item purchase.
+
+-->
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -109,6 +120,7 @@
         <th>Actions</th>
     </tr>
 <c:forEach var="food" items="${foodList}">
+<!-- Loop through food items to display in table rows -->
     <tr>
         <td>${food.fid}</td>
         <td>${food.fname}</td>
@@ -158,6 +170,7 @@
         </td>
     </tr>
 </c:forEach>
+    <!-- Modals for subscription confirmation and item purchase -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close1">&times;</span>
@@ -174,11 +187,13 @@
             <button id="cancelBtn2">cancel</button>
         </div>
     </div>
+    <!-- JavaScript code for modal functionality and event handling -->
     <script>
         let fid1;
         let inventory1;
         let price1;
         let discount1;
+        // Function to display the modal for item purchase
         function showModal(fid,inventory,price,discount) {
             fid1=fid;
             inventory1=inventory;
@@ -188,6 +203,7 @@
             console.log(inventory1)
             document.getElementById('myModal').style.display = "block";
         }
+        // Function to display the modal for subscription confirmation
         function showSubscribeModal(fid) {
             fid1=fid;
             document.getElementById('myModal2').style.display = "block";
@@ -205,7 +221,7 @@
         span2.onclick = function() {
             modal2.style.display = "none";
         }
-
+        // Functionality to close modals when clicking outside the modal content
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -214,7 +230,7 @@
                 modal2.style.display = "none";
             }
         }
-
+        // Event listeners for the confirm and cancel buttons in the purchase modal
         document.getElementById('confirmBtn').addEventListener('click', function() {
             var inputValue = document.getElementById('inputField').value;
             if(inputValue>inventory1){
@@ -229,11 +245,12 @@
                 modal.style.display = "none";
             }
         });
+        // Event listeners for the confirm and cancel buttons in the subscription confirmation modal
         document.getElementById('confirmBtn2').addEventListener('click', function() {
                 window.location.href="AddSubscribeServlet?fid="+fid1;
                 modal2.style.display = "none";
         });
-
+        // Event listeners for the cancel buttons in both modals
         document.getElementById('cancelBtn').addEventListener('click', function() {
             modal.style.display = "none";
         });

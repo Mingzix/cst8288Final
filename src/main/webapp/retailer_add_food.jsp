@@ -11,27 +11,32 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
+      
       align-items: center;
       height: 100vh;
       background-color: #f5f5f5;
     }
     form {
-      width: 100%;
-      max-width: 400px;
+      width: 50%;
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      margin: auto;  
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      
     }
     label {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     input[type="text"],
     input[type="number"],
     input[type="date"],
     select {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
+      padding: 5px;
+      margin-bottom: 10px;
       border: 1px solid #ddd;
     }
     #loginoutdiv{
@@ -76,8 +81,10 @@
       <option value="${type.id}">${type.name}</option>
     </c:forEach>
   </select>
-
+ 
   <input type="submit" value="Submit">
+   <input type="button" value="Cancel" onclick="history.go(-1);">
+  
 </form>
 </body>
 </html>
