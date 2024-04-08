@@ -1,3 +1,13 @@
+/**
+ * The {@code FoodDao} class provides methods for interacting with the database related to food items.
+ * It includes methods for retrieving food items, updating food items, and adding new food items.
+ * <p>
+ * This class utilizes JDBC for database connectivity and performs CRUD operations on the food table.
+ * </p>
+ * 
+ * @author Shuting Wang, Mingzi Xu 
+ * @version version 1.1
+ */
 package dao;
 
 import food.Food;
@@ -14,7 +24,14 @@ import java.util.Date;
 import java.util.List;
 
 public class FoodDao {
-
+	 /**
+     * Retrieves a list of food items based on the user type, user ID, and store ID.
+     * 
+     * @param userType The type of user accessing the food list.
+     * @param uid The ID of the user.
+     * @param storeId The ID of the store.
+     * @return A list of {@code FoodVo} objects representing the food items.
+     */
     public List<FoodVo> getFoodList(String userType,int uid, String storeId)
     {
         List<FoodVo> foods = new ArrayList();
@@ -27,11 +44,14 @@ public class FoodDao {
             // Prepare the SQL query
             String sql = "";
             if("organization".equals(userType) ){
+            	//only list the food items that is_donate=1
                 sql = "SELECT * FROM food f,food_type ft where f.ftid=ft.id and f.is_donate=?";
             }else if("consumer".equals(userType)){
+            	//list the food items that is_donate=0, match specific store_id
                 sql = "SELECT *,IF(s.sid IS NOT NULL AND s.uid=?,1,0) is_subscribe FROM food f INNER JOIN food_type ft ON f.ftid=ft.id " +
                         "LEFT JOIN subscribe s ON f.fid=s.fid where f.is_donate=? and f.store_id=?";
             }else if("retailer".equals(userType)){
+            	//only list the food items match specific uid
                 sql="SELECT f.*,ft.name " +
                         "FROM food f,store s,food_type ft " +
                         "WHERE f.store_id=s.store_id AND ft.id=f.ftid AND s.uid=?";
@@ -47,6 +67,7 @@ public class FoodDao {
                 pstmt.setInt(1,uid);
             }
 
+            //execute the query
             rs = pstmt.executeQuery();
 
             // process the result set
@@ -76,7 +97,12 @@ public class FoodDao {
         JDBCUtils.close(rs, pstmt, connection);
         return foods;
     }
-
+    /**
+     * Retrieves a food item based on its ID.
+     * 
+     * @param fid The ID of the food item.
+     * @return A {@code FoodVo} object representing the food item.
+     */
     public FoodVo getFoodById(int fid)
     {
         try {
@@ -114,9 +140,13 @@ public class FoodDao {
         return null;
     }
 
-    //updateFood to based on the fid to modify the inventory and expiration
-    public int updateFood(Food food)
-    {
+    /**
+     * Updates a food item in the database based on its ID.
+     * 
+     * @param food The {@code Food} object representing the food item.
+     * @return The number of rows affected by the update operation.
+     */
+    public int updateFood(Food food) {
         try {
             Connection connection = JDBCUtils.getConnection();
             String sql = "update food set is_donate=?,inventory=?,expiration=?,discount=? where fid=?";
@@ -134,6 +164,12 @@ public class FoodDao {
         }
     }
 
+    /**
+     * Checks whether the expiration date of a food item is within seven days.
+     * 
+     * @param expiration The expiration date of the food item.
+     * @return {@code true} if the expiration date is within seven days, {@code false} otherwise.
+     */
     public boolean isWithinSevenDays(Date expiration) {
         Date currentDate = new Date();
 
@@ -148,9 +184,15 @@ public class FoodDao {
         return daysDifference <= 7;
     }
 
+    /**
+     * Adds a new food item to the database.
+     * 
+     * @param food The {@code Food} object representing the new food item.
+     * @return The number of rows affected by the insert operation.
+     */
     public int addFood(Food food) {
            String sql =
-                "INSERT INTO food(fid, fname, expiration, price, inventory, discount, ftid) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "INSERT INTO food(fid, fname, expiration, price, inventory, discount, ftid, store_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = JDBCUtils.getConnection();PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, food.getFid());
             pstmt.setString(2, food.getFname());
@@ -159,6 +201,7 @@ public class FoodDao {
             pstmt.setInt(5, food.getInventory());
             pstmt.setDouble(6, food.getDiscount());
             pstmt.setInt(7, food.getFtid());
+            pstmt.setInt(8, food.getStoreId());
             int executeUpdate = pstmt.executeUpdate();
             JDBCUtils.close(pstmt, connection);
             return executeUpdate;

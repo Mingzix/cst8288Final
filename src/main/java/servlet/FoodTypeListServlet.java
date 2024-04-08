@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.util.List;
 
 import Service.FoodTypeService;
+import Service.StoreService;
 import food.FoodType;
+import food.Store;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -36,8 +38,12 @@ public class FoodTypeListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         foodTypeService = new FoodTypeService();
+       // StoreService storeService = new StoreService(); // Initialize store object
         List<FoodType> foodTypeList = foodTypeService.getAllFoodTypes();
+
+        //List<Store> storeList = storeService.getAllStores();
         request.setAttribute("foodTypeList", foodTypeList);
+        //request.setAttribute("storeList", storeList);
         request.getRequestDispatcher("retailer_add_food.jsp").forward(request, response);
     }
 }
