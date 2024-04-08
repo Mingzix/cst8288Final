@@ -6,7 +6,6 @@ public class Store {
     private String city;  
     private int uid;  
   
-    // 构造方法  
     public Store() {  
     }  
   
@@ -15,9 +14,14 @@ public class Store {
         this.storeName = storeName;  
         this.city = city;  
         this.uid = uid;  
-    }  
-  
-    // Getter和Setter方法  
+    }
+
+    public Store(int uid, String storeName, String city) {
+        this.uid = uid;
+        this.storeName = storeName;
+        this.city = city;
+    }
+
     public int getStoreId() {  
         return storeId;  
     }  
@@ -50,7 +54,7 @@ public class Store {
         this.uid = uid;  
     }  
   
-    // toString方法，方便打印对象信息  
+
     @Override  
     public String toString() {  
         return "Store{" +  
