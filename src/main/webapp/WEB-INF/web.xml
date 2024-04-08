@@ -114,4 +114,14 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StoreListServlet</display-name>
+    <servlet-name>StoreListServlet</servlet-name>
+    <servlet-class>servlet.StoreListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StoreListServlet</servlet-name>
+    <url-pattern>/StoreListServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

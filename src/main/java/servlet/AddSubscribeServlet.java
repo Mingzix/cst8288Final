@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AddSubscribeServlet
  */
+
 public class AddSubscribeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,6 +27,6 @@ public class AddSubscribeServlet extends HttpServlet {
         if (addSubscribe<1) {
             req.setAttribute("msg", "subscribe fail");
         }
-        resp.sendRedirect("FoodListServlet");
+        resp.sendRedirect("StoreListServlet");
     }
 }

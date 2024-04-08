@@ -10,29 +10,48 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;  
 
+/**
+ * Servlet implementation class LoginServlet
+ * @author Zoe Zhou
+ */
 public class LoginServlet extends HttpServlet {  
       
+	/**
+	 * This function handles servlet requests made over HTTP POST method
+	 * @param request HttpServletRequest object that provides request information for HTTP servlets
+	 * @param response HttpServletResponse object that provides HTTP-specific functionality in sending a response
+	 */
     @Override  
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	// Retrieve name parameter from the POST request
         String name = request.getParameter("name");  
+        // Retrieve password parameter from the POST request
         String password = request.getParameter("password");  
           
-        UserService userService = new UserService(); // 假设getConnection()方法返回数据库连接
+        // Instantiate UserService to perform credentials verification against DB
+        UserService userService = new UserService(); 
           
-        // 调用UserService的validateUser方法进行登录校验  
+        // Invoke getUserByNameAndPassword method to lookup the username and password combination in the DB
         User user = userService.getUserByNameAndPassword(name, password);
           
-        // 根据校验结果返回响应  
+        // If the previous lookup returns a User object, the credentials entered are verified.
         if (user!=null) {
-            // 登录成功，设置session或其他认证方式  
-            request.getSession().setAttribute("user", user); // 示例：将用户名存入session
-            response.sendRedirect("FoodListServlet"); // 重定向到成功页面
+            // Save user object into session for future reference
+            request.getSession().setAttribute("user", user); 
+            
+            // Update user's last login timestamp in DB
+            userService.updateLastTime(user.getUid());
+            
+            // Redirect the user to different pages based on user's role (UserType)
+            if("consumer".equals(user.getUserType())){
+                response.sendRedirect("StoreListServlet"); // Store List Page
+            }else {
+                response.sendRedirect("FoodListServlet"); // Food List Page
+            }
         } else {  
-            // 登录失败，返回错误信息  
+            // Authentication failure. Send user back to the sign-in page.
             request.setAttribute("msg", "Invalid username or password");
-            request.getRequestDispatcher("index.jsp").forward(request, response); // 转发回登录页面
+            request.getRequestDispatcher("index.jsp").forward(request, response); 
         }  
     }  
-      
-
 }

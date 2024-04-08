@@ -11,33 +11,39 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class RegisterServlet
+ * @author Zoe Zhou
  */
 public class RegisterServlet extends HttpServlet {
 
+	/**
+	 * This function handles servlet requests made over HTTP POST method
+	 * @param request HttpServletRequest object that provides request information for HTTP servlets
+	 * @param response HttpServletResponse object that provides HTTP-specific functionality in sending a response
+	 */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // 从请求中获取参数  
+        // Fetch parameters name, email, password and userType from the HTTP request
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String userType = request.getParameter("userType");
 
-        // 封装成User对象  
+        // Construct a User object
         User user = new User(name, email, password, userType);
 
-        // 创建UserService实例  
+        // Instantiate UserService class
         UserService userService = new UserService();
 
-            // 调用UserService的register方法完成注册
+            // Invoke addUser method to add the user entity into DB and save the return value into result
             int result = userService.addUser(user);
 
             if (result > 0) {
-                // 注册成功，重定向到登录页面或显示成功信息
-                response.sendRedirect("index.jsp"); // 假设登录页面为login.jsp
+                // Redirect the user back to login page when successful
+                response.sendRedirect("index.jsp"); 
             } else {
-                // 注册失败，显示错误信息  
+                // Redirect the user back to login page and show error message
                 request.setAttribute("msg", "Registration failed. Please try again.");
-                request.getRequestDispatcher("index.jsp").forward(request, response); // 假设注册页面为register.jsp
+                request.getRequestDispatcher("index.jsp").forward(request, response); 
             }
     }
 }

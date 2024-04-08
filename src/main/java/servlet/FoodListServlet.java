@@ -17,10 +17,11 @@ public class FoodListServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
+        String storeId = req.getParameter("storeId");
         String userType = user.getUserType();
 
         FoodService foodService = new FoodService();
-        List<FoodVo> foodList = foodService.getFoodList(userType,user.getUid());
+        List<FoodVo> foodList = foodService.getFoodList(userType,user.getUid(),storeId);
         req.setAttribute("foodList",foodList);
         String path = "";
         if(userType.equals("retailer")){
@@ -28,7 +29,7 @@ public class FoodListServlet extends HttpServlet {
         }else if(userType.equals("organization")){
             path = "organization_main.jsp";
         }else if(userType.equals("consumer")){
-            path = "consumer_main.jsp";
+            path = "consumer_food_list.jsp";
         }
         req.getRequestDispatcher(path).forward(req,resp);
     }

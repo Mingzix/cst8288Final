@@ -44,7 +44,7 @@
         }
 
         .modal {
-            display: none; /* hide */
+            display: none; 
             position: fixed; /* Stay in place */
             z-index: 1; /* Sit on top */
             padding-top: 100px; /* Location of the box */
@@ -131,47 +131,90 @@
                 </c:otherwise>
             </c:choose>
         </td>
-        <td><button onclick="showModal(${food.fid},${food.inventory})">receive</button></td>
+        <td>
+            <c:choose>
+                <c:when test="${food.isExpired == 'no'}">
+                    <c:choose>
+                        <c:when test="${food.isSubscribe==1}">
+                            <button onclick="location.href='RemoveSubscribeServlet?fid=${food.fid}'" >Unsubscribe</button>
+                        </c:when>
+                        <c:otherwise>
+                            <button onclick="showSubscribeModal(${food.fid})">subscription</button>
+                        </c:otherwise>
+                    </c:choose>
+                </c:when>
+                <c:when test="${food.isExpired=='yes'}">
+                    <button disabled>subscription</button>
+                </c:when>
+            </c:choose>
+            <c:choose>
+                <c:when test="${food.inventory == 0}">
+                    <button onclick="showModal(${food.fid},${food.inventory},${food.price},${food.discount})" disabled>buy</button>
+                </c:when>
+                <c:when test="${food.inventory>0}">
+                    <button onclick="showModal(${food.fid},${food.inventory},${food.price},${food.discount})">buy</button>
+                </c:when>
+            </c:choose>
+        </td>
     </tr>
 </c:forEach>
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <input type="number" id="inputField" placeholder="reveive num"><br/><br/>
+            <span class="close1">&times;</span>
+            <input type="number" id="inputField" placeholder="buy num"><br/><br/>
             <button id="confirmBtn">confirm</button>
             <button id="cancelBtn">cancel</button>
+        </div>
+    </div>
+    <div id="myModal2" class="modal">
+        <div class="modal-content">
+            <span class="close2">&times;</span>
+            <span>confirm subscription？</span><br/><br/>
+            <button id="confirmBtn2">confirm</button>
+            <button id="cancelBtn2">cancel</button>
         </div>
     </div>
     <script>
         let fid1;
         let inventory1;
-        function showModal(fid,inventory) {
+        let price1;
+        let discount1;
+        function showModal(fid,inventory,price,discount) {
             fid1=fid;
             inventory1=inventory;
+            price1=price;
+            discount1=discount;
             console.log(fid1)
             console.log(inventory1)
             document.getElementById('myModal').style.display = "block";
         }
+        function showSubscribeModal(fid) {
+            fid1=fid;
+            document.getElementById('myModal2').style.display = "block";
+        }
 
-      
         var modal = document.getElementById("myModal");
+        var modal2 = document.getElementById("myModal2");
 
-        
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("close1")[0];
+        var span2 = document.getElementsByClassName("close2")[0];
 
-        
         span.onclick = function() {
             modal.style.display = "none";
         }
+        span2.onclick = function() {
+            modal2.style.display = "none";
+        }
 
-        // when user click other place
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
         }
 
-        // the button
         document.getElementById('confirmBtn').addEventListener('click', function() {
             var inputValue = document.getElementById('inputField').value;
             if(inputValue>inventory1){
@@ -181,14 +224,21 @@
                     alert("not empty")
                     return;
                 }
-                window.location.href="AddOrderServlet?fid="+fid1+"&num="+inputValue;
+                let money = price1*inputValue*discount1;
+                window.location.href="AddOrderServlet?fid="+fid1+"&num="+inputValue+"&money="+money;
                 modal.style.display = "none";
             }
         });
+        document.getElementById('confirmBtn2').addEventListener('click', function() {
+                window.location.href="AddSubscribeServlet?fid="+fid1;
+                modal2.style.display = "none";
+        });
 
-        // cancell button
         document.getElementById('cancelBtn').addEventListener('click', function() {
             modal.style.display = "none";
+        });
+        document.getElementById('cancelBtn2').addEventListener('click', function() {
+            modal2.style.display = "none";
         });
     </script>
 </table>

@@ -40,6 +40,7 @@
             margin-top: 20px;
             margin-bottom: 20px;
         }
+        tr:hover {background-color: #f5f5f5;}
 
         #loginoutdiv{
             width: 80%;
@@ -49,9 +50,10 @@
     </style>
 </head>
 <body>
-<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>Log out</button></a></div>
+<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
+    <p>last login: ${user.lastLogin}</p>
+</div>
 <h1>Food List</h1>
-<!-- 添加按钮 -->
 <button class="add-button" onclick="window.location.href='FoodTypeListServlet';">Add</button>
 <table>
     <tr>
@@ -64,7 +66,7 @@
         <th>Type</th>
         <th>isExpired</th>
         <th>isDonate</th>
-        <th>Edit</th>
+        <th>Actions</th>
     </tr>
 <c:forEach var="food" items="${foodList}">
     <tr>
