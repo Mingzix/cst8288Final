@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Store List</title>
     <style>
+        /* 样式表 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -64,6 +65,7 @@
         <td>${store.storeName}</td>
         <td>${store.city}</td>
         <td>
+            <!-- 使用button元素替代a标签，并应用CSS样式 -->
             <button class="view-button" onclick="window.location.href='FoodListServlet?storeId=${store.storeId}'">View</button>
         </td>
     </tr>

@@ -41,12 +41,17 @@
       border: none;
       cursor: pointer;
     }
-    
-   
-	
+    #loginoutdiv{
+      width: 80%;
+      text-align: right;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
+<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>login out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
+  <p>last login: ${user.lastLogin}</p>
+</div>
 <p>${msg}</p>
 <form action="EditFoodServlet" method="post">
   <label for="fid">Food ID:</label>
