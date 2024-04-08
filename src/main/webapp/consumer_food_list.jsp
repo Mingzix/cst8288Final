@@ -17,7 +17,7 @@
             background-color: #f5f5f5;
         }
         table {
-            margin: auto;  /* 使表格水平居中 */
+            margin: auto;  
             width: 80%;
             border-collapse: collapse;
         }
@@ -44,7 +44,7 @@
         }
 
         .modal {
-            display: none; /* 默认隐藏弹窗 */
+            display: none; 
             position: fixed; /* Stay in place */
             z-index: 1; /* Sit on top */
             padding-top: 100px; /* Location of the box */
