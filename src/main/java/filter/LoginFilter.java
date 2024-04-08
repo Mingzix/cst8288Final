@@ -7,28 +7,42 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;  
 import java.io.IOException;  
 
+/**
+ * Filter implementation class LoginFilter
+ * @author Zoe Zhou
+ */
 @WebFilter("/*")
 public class LoginFilter implements Filter {  
-  
+
+  	/**
+	   * This function handles filter initialization tasks such as loading configuraiton files
+	   * @param filterConfig a filter configuration object used by a servlet container to pass information to a filter during initialization.
+	   */
     @Override  
     public void init(FilterConfig filterConfig) throws ServletException {  
-        // 初始化方法，可以在这里进行一些初始化操作，比如加载配置文件等  
     }  
-  
+
+    /**
+     * Called by the container each time a request/response pair is passed through the chain due to a client request for a resource at the end of the chain.
+	   * @param request HttpServletRequest object that provides request information for HTTP servlets
+	   * @param response HttpServletResponse object that provides HTTP-specific functionality in sending a response
+     * @param chain Filters use the FilterChain to invoke the next filter in the chain, or if the calling filter is the last filter in the chain, to invoke the resource at the end of the chain.
+     */
     @Override  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)  
             throws IOException, ServletException {  
         HttpServletRequest httpRequest = (HttpServletRequest) request;  
         HttpServletResponse httpResponse = (HttpServletResponse) response;  
-        HttpSession session = httpRequest.getSession(false); // 不创建新的session  
+        // Set to false so we don't create new session
+        HttpSession session = httpRequest.getSession(false); 
   
-        // 获取请求的资源路径  
+        // Fetch the request URI
         String requestURI = httpRequest.getRequestURI();  
   
-        // 定义放行的资源路径  
+        // Define allowed resource paths
         String[] allowedPaths = {"/index.jsp", "/LoginServlet", "/RegisterServlet","/"};
   
-        // 检查是否需要验证session  
+        // Check request path against allowed list
         boolean isAllowed = false;  
         for (String path : allowedPaths) {  
             if (requestURI.endsWith(path)) {  
@@ -36,19 +50,21 @@ public class LoginFilter implements Filter {
                 break;  
             }  
         }  
-  
+
+        // If requested resource is allowed and session is valid, continue with the filter chain
         if (isAllowed || (session != null && session.getAttribute("user") != null)) {  
-            // 如果是放行资源或者session中有user对象，则继续执行后续过滤器或目标资源  
             chain.doFilter(request, response);  
         } else {  
-            // 否则，将请求转发到index.jsp，并设置msg属性  
+            // Otherwise redirect user back to index.jsp and show error message
             httpRequest.setAttribute("msg", "not login");  
             httpRequest.getRequestDispatcher("/index.jsp").forward(httpRequest, httpResponse);  
         }  
     }  
-  
+
+    /**
+     *  Called by the web container to indicate to a filter that it is being taken out of service.
+     */
     @Override  
     public void destroy() {  
-        // 销毁方法，可以在这里进行一些清理操作  
     }  
 }
