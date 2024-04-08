@@ -8,6 +8,7 @@ import java.util.Date;
 
 import Service.FoodService;
 import food.Food;
+import food.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,7 +34,8 @@ public class FoodAddServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-        // Create a new Food object to store the details of the new food item
+        User user = (User) request.getSession().getAttribute("user");
+		// Create a new Food object to store the details of the new food item
     	Food food = new Food();
         // Retrieve the parameters from the request
         String fname = request.getParameter("fname");
@@ -51,22 +53,22 @@ public class FoodAddServlet extends HttpServlet {
         String inventory = request.getParameter("inventory");
         String discount = request.getParameter("discount");
         String ftid = request.getParameter("ftid");
-        String storeId = request.getParameter("store"); // Get store location parameter
+        //String storeId = request.getParameter("store"); // Get store location parameter
 
         food.setFname(fname);
         food.setPrice(new BigDecimal(price));
         food.setInventory(Integer.parseInt(inventory));
         food.setDiscount(Double.parseDouble(discount));
         food.setFtid(Integer.parseInt(ftid));
-        if (storeId != null) {
-            food.setStoreId(Integer.parseInt(storeId)); // Set store location in the Food object
-        }
+       // if (storeId != null) {
+      //      food.setStoreId(Integer.parseInt(storeId)); // Set store location in the Food object
+       // }
        // food.setStoreId(Integer.parseInt(storeId)); // Set store location in the Food object
 
         // Instantiate FoodService to perform the addition of the food item
         FoodService foodService = new FoodService();
         // Call the addFood method and store the result
-        int result = foodService.addFood(food);
+        int result = foodService.addFood(food, user.getUid());
         // Redirect to FoodListServlet if addition is successful, otherwise forward to FoodTypeListServlet
         if(result == 1){
             resp.sendRedirect("FoodListServlet");

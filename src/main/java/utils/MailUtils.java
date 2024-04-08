@@ -10,6 +10,24 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Properties;
 
+/**
+ * Utility class for sending emails using the SMTP protocol with a Gmail account.
+ * This class configures and sends emails to one or multiple recipients.
+ * 
+ * <p>References for sending email in Java:</p>
+ * <ul>
+ *     <li>
+ *         Sending Email in Java:
+ *         <a href="https://javatpoint.com/example-of-sending-email-using-java-mail-api">https://javatpoint.com/example-of-sending-email-using-java-mail-api</a>
+ *     </li>
+ *     <li>
+ *         JavaMail Example - Send Mail in Java using SMTP:
+ *         <a href="https://www.digitalocean.com/community/tutorials/javamail-example-send-mail-in-java-smtp">https://www.digitalocean.com/community/tutorials/javamail-example-send-mail-in-java-smtp</a>
+ *     </li>
+ * </ul>
+ * 
+ * @author Shuting Wang
+ */
 public class MailUtils {
 
     // Email protocol
@@ -24,11 +42,13 @@ public class MailUtils {
     private static final String emailPassword = "jakezyzcwgycthez"; // Gmail application password
 
     /**
-     * Sends an email
+     * Sends an email to the specified list of recipients.
+     * This method configures and sends an email using the SMTP protocol. It supports sending emails to multiple recipients.
      *
-     * @param emails  Target email addresses
-     * @param title   Email title
-     * @param content Email content
+     * @param emails  A {@link Set} of target email addresses to whom the email will be sent. Cannot be {@code null} or empty.
+     * @param title   The title (subject) of the email. Cannot be {@code null}.
+     * @param content The content (body) of the email, which can include HTML. Cannot be {@code null}.
+     * @return {@code true} if the email was sent successfully; {@code false} otherwise.
      */
     public static boolean sendEmail(Set<String> emails, String title, String content) {
         // Directly return if no recipient email addresses are passed

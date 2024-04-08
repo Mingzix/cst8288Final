@@ -9,5 +9,8 @@ public class StoreService {
   
     public List<Store> getAllStores() {
         return storeDao.getAllStores();  
-    }  
+    }
+    public  int addStore(Store store) {
+        return storeDao.addStore(store);
+    }
 }
