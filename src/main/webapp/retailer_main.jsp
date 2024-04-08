@@ -64,9 +64,9 @@
         <th>Inventory</th>
         <th>Discount</th>
         <th>Type</th>
-        <th>isExpired</th>
-        <th>isDonate</th>
-        <th>Actions</th>
+        <th>Expired</th>
+        <th>For Donation</th>
+        <th>Action</th>
     </tr>
 <c:forEach var="food" items="${foodList}">
     <tr>
