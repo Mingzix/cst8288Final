@@ -193,15 +193,12 @@
             document.getElementById('myModal2').style.display = "block";
         }
 
-        // 获取模态窗口
         var modal = document.getElementById("myModal");
         var modal2 = document.getElementById("myModal2");
 
-        // 获取 <span> 元素，用于关闭模态窗口
         var span = document.getElementsByClassName("close1")[0];
         var span2 = document.getElementsByClassName("close2")[0];
 
-        // 当用户点击 <span> (x), 关闭模态窗口
         span.onclick = function() {
             modal.style.display = "none";
         }
@@ -209,7 +206,6 @@
             modal2.style.display = "none";
         }
 
-        // 当用户点击其他地方，关闭模态窗口
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -219,7 +215,6 @@
             }
         }
 
-        // 购买确定按钮点击事件
         document.getElementById('confirmBtn').addEventListener('click', function() {
             var inputValue = document.getElementById('inputField').value;
             if(inputValue>inventory1){
@@ -234,13 +229,11 @@
                 modal.style.display = "none";
             }
         });
-        // 订阅确定按钮点击事件
         document.getElementById('confirmBtn2').addEventListener('click', function() {
                 window.location.href="AddSubscribeServlet?fid="+fid1;
                 modal2.style.display = "none";
         });
 
-        // 取消按钮点击事件
         document.getElementById('cancelBtn').addEventListener('click', function() {
             modal.style.display = "none";
         });

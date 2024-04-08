@@ -54,7 +54,6 @@
     <p>last login: ${user.lastLogin}</p>
 </div>
 <h1>Food List</h1>
-<!-- 添加按钮 -->
 <button class="add-button" onclick="window.location.href='FoodTypeListServlet';">Add</button>
 <table>
     <tr>
