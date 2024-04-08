@@ -2,11 +2,13 @@ package Service;
 
 import food.Food;
 import food.FoodVo;
+import food.Store;
 import food.Subscribe;
 import food.User;
 import dao.FoodDao;
 import dao.SubscribeDao;
 import dao.UserDao;
+import dao.StoreDao;
 import utils.MailUtils;
 
 import java.util.ArrayList;
@@ -18,11 +20,13 @@ public class FoodService {
     private FoodDao foodDao;
     private SubscribeDao subscribeDao;
     private UserDao userDao;
+    private StoreDao storeDao;
     public FoodService()
     {
         foodDao = new FoodDao();
         subscribeDao = new SubscribeDao();
         userDao = new UserDao();
+        storeDao = new StoreDao();
     }
 
     public List<FoodVo> getFoodList(String userType, int uid, String storeId){
@@ -58,7 +62,12 @@ public class FoodService {
         return result;
     }
 
-    public int addFood(Food food) {
+	
+	  public int addFood(Food food, int uid) {
+        Store store =  storeDao.getByUid(uid);
+        if(store!=null){
+            food.setStoreId(store.getStoreId());
+        }
         return foodDao.addFood(food);
     }
 }
