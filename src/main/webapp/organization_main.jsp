@@ -93,7 +93,7 @@
 <div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
     <p>last login: ${user.lastLogin}</p>
 </div>
-<h1>Food List</h1>
+<h1>Donate Food List</h1>
 <p>${msg}</p>
 <table>
     <tr>
@@ -102,10 +102,9 @@
         <th>Expiration</th>
         <th>Price</th>
         <th>Inventory</th>
-        <th>Discount</th>
         <th>Type</th>
-        <th>isExpired</th>
-        <th>isDonate</th>
+        <th>Surplus</th>
+        <th>Donated</th>
         <th>Actions</th>
     </tr>
 <c:forEach var="food" items="${foodList}">
@@ -115,7 +114,6 @@
         <td>${food.expiration}</td>
         <td>${food.price}</td>
         <td>${food.inventory}</td>
-        <td>${food.discount}</td>
         <td>${food.foodType}</td>
         <td>${food.isExpired}</td>
         <td>
