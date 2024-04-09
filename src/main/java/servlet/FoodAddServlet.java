@@ -53,16 +53,16 @@ public class FoodAddServlet extends HttpServlet {
         String inventory = request.getParameter("inventory");
         String discount = request.getParameter("discount");
         String ftid = request.getParameter("ftid");
-        //String storeId = request.getParameter("store"); // Get store location parameter
+        String storeId = request.getParameter("store"); // Get store location parameter
 
         food.setFname(fname);
         food.setPrice(new BigDecimal(price));
         food.setInventory(Integer.parseInt(inventory));
         food.setDiscount(Double.parseDouble(discount));
         food.setFtid(Integer.parseInt(ftid));
-       // if (storeId != null) {
-      //      food.setStoreId(Integer.parseInt(storeId)); // Set store location in the Food object
-       // }
+        if (storeId != null) {
+            food.setStoreId(Integer.parseInt(storeId)); // Set store location in the Food object
+        }
        // food.setStoreId(Integer.parseInt(storeId)); // Set store location in the Food object
 
         // Instantiate FoodService to perform the addition of the food item
