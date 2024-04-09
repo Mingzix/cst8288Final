@@ -275,6 +275,7 @@ JavaMail Example - Send Mail in Java using SMTP: https://www.digitalocean.com/co
 
 Auto-generated key: https://stackoverflow.com/questions/14844864/jdbc-preparedstatement-always-returns-1-as-auto-generated-key 
 
+How to list records in a database table using JSP and JSTL:https://www.codejava.net/java-ee/jsp/how-to-list-records-in-a-database-table-using-jsp-and-jstl
  
 
 **List of Figures**
