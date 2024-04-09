@@ -2,7 +2,9 @@ package servlet;
 
 import java.io.IOException;
 
+import Service.StoreService;
 import Service.UserService;
+import food.Store;
 import food.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -27,18 +29,24 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String userType = request.getParameter("userType");
+        String storeName = request.getParameter("storeName");
+        String city = request.getParameter("city");
 
         // Construct a User object
         User user = new User(name, email, password, userType);
 
         // Instantiate UserService class
         UserService userService = new UserService();
+        StoreService storeService = new StoreService();
 
             // Invoke addUser method to add the user entity into DB and save the return value into result
             int result = userService.addUser(user);
 
             if (result > 0) {
-                // Redirect the user back to login page when successful
+                if("retailer".equals(userType)) {
+                    Store store = new Store(user.getUid(), storeName, city);
+                    storeService.addStore(store);
+                }
                 response.sendRedirect("index.jsp"); 
             } else {
                 // Redirect the user back to login page and show error message

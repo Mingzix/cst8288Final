@@ -73,19 +73,22 @@ public class FoodService {
             //send email
             //check subscriber
             List<Subscribe> subscribeList = subscribeDao.getSubscribesByFid(food.getFid());
-            //get user information
-            List<Integer> uids = new ArrayList();
-            for(Subscribe subscribe:subscribeList){
-                uids.add(subscribe.getUid());
+            if(!subscribeList.isEmpty()) {
+            	//get user information
+                List<Integer> uids = new ArrayList();
+                for(Subscribe subscribe:subscribeList){
+                    uids.add(subscribe.getUid());
+                }
+                List<User> userList = userDao.getByUids(uids);
+                Set<String> set = new HashSet<>();
+                for (User user : userList) {
+                    set.add(user.getEmail());
+                }
+                MailUtils.sendEmail(set,"Food subscription reminder","The food "+foodVo.getFname()+" you subscribed to has been set as expired, go buy now!");
+                
+                subscribeDao.deleteSubscribesByFid(food.getFid());
             }
-            List<User> userList = userDao.getByUids(uids);
-            Set<String> set = new HashSet<>();
-            for (User user : userList) {
-                set.add(user.getEmail());
-            }
-            MailUtils.sendEmail(set,"Food subscription reminder","The food "+foodVo.getFname()+" you subscribed to has been set as expired, go buy now!");
             
-            subscribeDao.deleteSubscribesByFid(food.getFid());
         }
         return result;
     }

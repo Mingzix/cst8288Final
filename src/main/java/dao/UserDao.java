@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;  
 import java.sql.ResultSet;  
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +30,7 @@ public class UserDao {
     public int addUser(User user) {
         ;
         String sql = "INSERT INTO user (uid, NAME, email, PASSWORD, user_type) VALUES (?, ?, ?, ?, ?)";
-        try (Connection connection = JDBCUtils.getConnection();PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+        try (Connection connection = JDBCUtils.getConnection();PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, user.getUid());
             preparedStatement.setString(2, user.getName());
             preparedStatement.setString(3, user.getEmail());
@@ -37,7 +38,13 @@ public class UserDao {
             preparedStatement.setString(5, user.getUserType());
               
             int update = preparedStatement.executeUpdate();
-            JDBCUtils.close(preparedStatement, connection);
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    long id = generatedKeys.getLong(1);
+                    user.setUid((int) id);
+                    JDBCUtils.close(generatedKeys,null,null);
+                }
+                    JDBCUtils.close(preparedStatement, connection);
             return update;
         }  catch (SQLException e){
             e.printStackTrace();
@@ -110,7 +117,7 @@ public class UserDao {
         List<User> users = new ArrayList<>();
 
         String placeholders = String.join(", ", Collections.nCopies(uids.size(), "?"));
-        String sql = "SELECT uid, name, email, password, user_type FROM user WHERE uid IN (" + placeholders + ")";
+        String sql = "SELECT * FROM user WHERE uid IN (" + placeholders + ")";
 
         try (Connection conn = JDBCUtils.getConnection();PreparedStatement pstmt = conn.prepareStatement(sql)) {
             for (int i = 0; i < uids.size(); i++) {

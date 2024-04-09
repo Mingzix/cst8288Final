@@ -149,9 +149,10 @@ public class FoodDao {
     public int updateFood(Food food) {
         try {
             Connection connection = JDBCUtils.getConnection();
-            String sql = "update food set is_donate=?,inventory=?,expiration=?,discount=? where fid=?";
+            String sql = "update food set is_donate=?,inventory=?,expiration=?,discount=? ,price=? where fid=?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(5,food.getFid());
+            pstmt.setInt(6,food.getFid());
+            pstmt.setBigDecimal(5,food.getPrice());
             pstmt.setDouble(4,food.getDiscount());
             pstmt.setDate(3,new java.sql.Date(food.getExpiration().getTime()));
             pstmt.setInt(2,food.getInventory());

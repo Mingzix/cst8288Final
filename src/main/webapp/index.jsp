@@ -47,6 +47,10 @@
             margin-top: 20px;
         }
 
+        #retailerFields{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     </style>
     <!-- https://coderanch.com/t/54978/frameworks/TAB-JSP -->
     <script>
@@ -100,6 +104,62 @@
         <label for="reg_password">Password:</label><br>
         <input type="password" id="reg_password" name="password"><br>
         <label>User Type:</label><br>
+        <input type="radio" id="retailer" name="userType" value="retailer" onclick="showHideFields()">
+        <label for="retailer">Retailer</label><br>
+        <!-- 初始隐藏city和store name的输入框 -->
+        <div id="retailerFields" >
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city"><br>
+            <label for="storeName">Store Name:</label><br>
+            <input type="text" id="storeName" name="storeName"><br>
+        </div>
+        <input type="radio" id="consumer" name="userType" value="consumer" onclick="showHideFields()">
+        <label for="consumer">Consumer</label><br>
+        <input type="radio" id="organization" name="userType" value="organization" onclick="showHideFields()">
+        <label for="organization">Organization</label><br><br>
+
+
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+<script>
+    function showHideFields() {
+        debugger
+        console.log("showHideFields")
+        // 获取所有的单选框
+        var radios = document.getElementsByName('userType');
+        // 获取需要显示或隐藏的输入框的容器
+        var retailerFields = document.getElementById('retailerFields');
+
+        // 遍历所有的单选框
+        for (var i = 0; i < radios.length; i++) {
+            // 如果选中的是retailer单选框
+            if (radios[i].id === 'retailer' && radios[i].checked) {
+                // 显示city和store name的输入框
+                retailerFields.style.display = 'block';
+                break
+            } else {
+                // 否则隐藏city和store name的输入框
+                retailerFields.style.display = 'none';
+            }
+        }
+    }
+
+    // 初始页面加载时，检查哪个单选框被选中，并据此显示或隐藏输入框
+    showHideFields();
+</script>
+<%--<div id="Register" class="tabcontent">
+    <h3>Register</h3>
+    <form action="RegisterServlet" method="post">
+        <label for="reg_name">Name:</label><br>
+        <input type="text" id="reg_name" name="name"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="reg_password">Password:</label><br>
+        <input type="password" id="reg_password" name="password"><br>
+        <label>User Type:</label><br>
         <input type="radio" id="retailer" name="userType" value="retailer">
         <label for="retailer">Retailer</label><br>
         <input type="radio" id="consumer" name="userType" value="consumer">
@@ -108,7 +168,7 @@
         <label for="organization">Organization</label><br><br>
         <input type="submit" value="Register">
     </form>
-</div>
+</div>--%>
 
 </body>
 </html>
