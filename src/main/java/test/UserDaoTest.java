@@ -10,12 +10,13 @@ import food.User;
 /**
  * The UserDaoTest class contains test cases for the methods in the UserDao class.
  */
-class UserDaoTest {
+public class UserDaoTest {
 
 	UserDao userDao;
 	
-    /**
+	/**
      * Tests the getUserByNameAndPassword method of the UserDao class.
+     * Verifies that the method returns a non-null User object when valid username and password are provided.
      */
 	@Test
 	void testGetUserByNameAndPassword() {
