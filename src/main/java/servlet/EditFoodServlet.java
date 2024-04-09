@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,7 +59,8 @@ public class EditFoodServlet extends HttpServlet {
             food.setIsDonate(Integer.parseInt(isDonate));
         }
         
-        // Instantiate FoodService to perform the update of the food item
+        String price = req.getParameter("price");
+        food.setPrice(new BigDecimal(price));        // Instantiate FoodService to perform the update of the food item
         FoodService foodService = new FoodService();
         // Redirect to FoodListServlet if update is successful, otherwise forward to EditFoodServlet with the fid parameter
         int updateFood = foodService.updateFood(food);

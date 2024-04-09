@@ -75,7 +75,7 @@ Key Features:
   <input type="date" id="expiration" name="expiration" value="${food.expiration}">
 
   <label for="price">Price:</label>
-  <input type="text" id="price" name="price" value="${food.price}" disabled>
+  <input type="text" id="price" name="price" value="${food.price}">
 
   <label for="inventory">Inventory:</label>
   <input type="number" id="inventory" name="inventory" value="${food.inventory}">
