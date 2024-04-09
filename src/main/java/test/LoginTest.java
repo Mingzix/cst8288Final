@@ -6,9 +6,15 @@ import org.junit.jupiter.api.Test;
 
 import Service.UserService;
 import food.User;
-
+/**
+ * The LoginTest class contains unit tests for user login functionality.
+ * It tests the getUserByNameAndPassword method of the UserService class.
+ */
 class LoginTest {
-
+	/**
+     * Tests the getUserByNameAndPassword method of the UserService class.
+     * Verifies that the correct user details are returned for valid credentials.
+     */
 	@Test
 	void testGetUserByNameAndPassword() {
 		// Instantiate UserService to perform credentials verification against DB
