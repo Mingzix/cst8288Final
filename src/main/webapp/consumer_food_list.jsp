@@ -113,7 +113,7 @@ Key Features:
 	<div id="topButtons">
 	  <button onclick="history.go(-1);">Go Back</button>
 	</div>
-	<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
+	<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;Welcome: ${user.name} &nbsp; &nbsp; &nbsp;
 	    <p>last login: ${user.lastLogin}</p>
 	</div>
 </div>
@@ -128,8 +128,8 @@ Key Features:
         <th>Inventory</th>
         <th>Discount</th>
         <th>Type</th>
-        <th>isExpired</th>
-        <th>isDonate</th>
+        <th>Surplus</th>
+        <th>Donated</th>
         <th>Actions</th>
     </tr>
 <c:forEach var="food" items="${foodList}">
@@ -164,12 +164,12 @@ Key Features:
                             <button onclick="location.href='RemoveSubscribeServlet?fid=${food.fid}'" >Unsubscribe</button>
                         </c:when>
                         <c:otherwise>
-                            <button onclick="showSubscribeModal(${food.fid})">subscription</button>
+                            <button onclick="showSubscribeModal(${food.fid})">Subscribe</button>
                         </c:otherwise>
                     </c:choose>
                 </c:when>
                 <c:when test="${food.isExpired=='yes'}">
-                    <button disabled>subscription</button>
+                    <button disabled>Subscribe</button>
                 </c:when>
             </c:choose>
             <c:choose>
