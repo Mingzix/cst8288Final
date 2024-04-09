@@ -30,6 +30,7 @@ CST8288_030 OOP with Design Patterns 2024 Winter Term
 | Version 2.3 | Mingzi Xu  | 2024/04/02 |
 | Version 3.1 | Zoe Zhou  | 2024/04/7 |
 | Version 3.2 | Mingzi Xu  | 2024/04/7 |
+| Version 3.3 | Mingzi Xu  | 2024/04/8 |
 
 
 ## Introduction  
@@ -237,12 +238,12 @@ dates for each item.
 **Detailed Design**
 ![UML class](https://github.com/Mingzix/cst8288Final/blob/main/src/main/docs/UML%20class.png)
 
-Class diagrams: https://github.com/Mingzix/cst8288Final/blob/main/UML%20class.png 
+Class diagrams: https://github.com/Mingzix/cst8288Final/blob/main/src/main/docs/UML%20class.png 
 
 **Data Architecture**
 
 ERD : ![UML class](https://github.com/Mingzix/cst8288Final/blob/main/src/main/docs/erd.png)
-https://github.com/Mingzix/cst8288Final/blob/main/erd.png
+https://github.com/Mingzix/cst8288Final/blob/main/src/main/docs/erd.png
 
 
 **Testing Model** 
@@ -251,19 +252,19 @@ https://github.com/Mingzix/cst8288Final/blob/main/erd.png
    
     _Test Classes:_
     
-    The classes in our program that will be tested are: 
+    The classes in our program that have been tested are: 
     	
-     Database Connection class 
+     Database Connection; 
     
      Food class 
     
      Login class 
     
-     Subscription class 
+     Subscription service 
     
-     All implemented Service classes 
+     DAO classes
     
-     TBD... 
+    
 
  
 **References**
