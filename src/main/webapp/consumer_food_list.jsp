@@ -113,7 +113,7 @@ Key Features:
 	<div id="topButtons">
 	  <button onclick="history.go(-1);">Go Back</button>
 	</div>
-	<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
+	<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;Welcome: ${user.name} &nbsp; &nbsp; &nbsp;
 	    <p>last login: ${user.lastLogin}</p>
 	</div>
 </div>
@@ -128,8 +128,8 @@ Key Features:
         <th>Inventory</th>
         <th>Discount</th>
         <th>Type</th>
-        <th>isExpired</th>
-        <th>isDonate</th>
+        <th>Surplus</th>
+        <th>Donated</th>
         <th>Actions</th>
     </tr>
 <c:forEach var="food" items="${foodList}">
