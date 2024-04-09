@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
+<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;Welcome: ${user.name} &nbsp; &nbsp; &nbsp;
     <p>last login: ${user.lastLogin}</p>
 </div>
 <h1>Food List</h1>
@@ -64,7 +64,7 @@
         <th>Inventory</th>
         <th>Discount</th>
         <th>Type</th>
-        <th>Expired</th>
+        <th>Surplus</th>
         <th>For Donation</th>
         <th>Action</th>
     </tr>
