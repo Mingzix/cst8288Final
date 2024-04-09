@@ -84,7 +84,7 @@ public class FoodService {
                 for (User user : userList) {
                     set.add(user.getEmail());
                 }
-                MailUtils.sendEmail(set,"Food subscription reminder","The food "+foodVo.getFname()+" you subscribed to has been set as expired, go buy now!");
+                MailUtils.sendEmail(set,"Food subscription reminder","The food "+foodVo.getFname()+" you subscribed to is now available at a surplus discount. Go and buy it now!");
                 
                 subscribeDao.deleteSubscribesByFid(food.getFid());
             }
