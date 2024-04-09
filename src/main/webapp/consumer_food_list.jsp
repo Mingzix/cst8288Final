@@ -164,12 +164,12 @@ Key Features:
                             <button onclick="location.href='RemoveSubscribeServlet?fid=${food.fid}'" >Unsubscribe</button>
                         </c:when>
                         <c:otherwise>
-                            <button onclick="showSubscribeModal(${food.fid})">subscription</button>
+                            <button onclick="showSubscribeModal(${food.fid})">Subscribe</button>
                         </c:otherwise>
                     </c:choose>
                 </c:when>
                 <c:when test="${food.isExpired=='yes'}">
-                    <button disabled>subscription</button>
+                    <button disabled>Subscribe</button>
                 </c:when>
             </c:choose>
             <c:choose>
