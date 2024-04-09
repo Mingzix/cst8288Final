@@ -1,13 +1,4 @@
-/**
- * The {@code FoodDao} class provides methods for interacting with the database related to food items.
- * It includes methods for retrieving food items, updating food items, and adding new food items.
- * <p>
- * This class utilizes JDBC for database connectivity and performs CRUD operations on the food table.
- * </p>
- * 
- * @author Shuting Wang, Mingzi Xu 
- * @version version 1.1
- */
+
 package dao;
 
 import food.Food;
@@ -22,7 +13,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * The {@code FoodDao} class provides methods for interacting with the database related to food items.
+ * It includes methods for retrieving food items, updating food items, and adding new food items.
+ * <p>
+ * This class utilizes JDBC for database connectivity and performs CRUD operations on the food table.
+ * </p>
+ * 
+ * @author Shuting Wang, Mingzi Xu 
+ * @version version 1.1
+ */
 public class FoodDao {
 	 /**
      * Retrieves a list of food items based on the user type, user ID, and store ID.

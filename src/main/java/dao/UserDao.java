@@ -14,10 +14,19 @@ import java.util.Collections;
 import java.util.List;
 import java.text.SimpleDateFormat;
 
+/**
+ * The UserDao class provides methods to interact with user entities in the database.
+ * @author Zoe Zhou
+ */
 public class UserDao {  
       
 
-
+	/**
+     * Adds a new user to the database.
+     *
+     * @param user The User object representing the user to be added.
+     * @return The number of rows affected (1 if successful, 0 otherwise).
+     */
     public int addUser(User user) {
         ;
         String sql = "INSERT INTO user (uid, NAME, email, PASSWORD, user_type) VALUES (?, ?, ?, ?, ?)";
@@ -42,7 +51,11 @@ public class UserDao {
         }
         return 0;
     }
-
+    /**
+     * Updates the last login time for a user.
+     *
+     * @param uid The ID of the user whose last login time is to be updated.
+     */
     public void updateLastTime(int uid){
         String sql = "UPDATE user SET last_login = ? WHERE uid = ?";
         try (Connection connection = JDBCUtils.getConnection();PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -53,7 +66,13 @@ public class UserDao {
             throw new RuntimeException(e);
         }
     }
-      
+    /**
+     * Retrieves a user from the database by name and password.
+     *
+     * @param name     The name of the user.
+     * @param password The password of the user.
+     * @return The User object if found, null otherwise.
+     */
     public User getUserByNameAndPassword(String name, String password) {
 
 
@@ -87,7 +106,12 @@ public class UserDao {
         return null;  
     }
 
-
+    /**
+     * Retrieves a list of users from the database by their IDs.
+     *
+     * @param uids The list of user IDs.
+     * @return A list of User objects representing the users found.
+     */
     public List<User> getByUids(List<Integer> uids) {
         //based on the ids the get the user
         List<User> users = new ArrayList<>();

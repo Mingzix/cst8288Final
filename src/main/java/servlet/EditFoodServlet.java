@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Servlet implementation class EditFoodServlet
  * 
  * <p>This servlet handles the editing of a food item in the database.</p>
- * 
+ * @author Mingzi Xu
  * @version 1.1
  * @since March 28, 2024
  */

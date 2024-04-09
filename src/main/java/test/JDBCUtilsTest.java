@@ -5,9 +5,16 @@ import utils.JDBCUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+/**
+ * The JDBCUtilsTest class contains unit tests for the JDBCUtils class.
+ * It tests methods for obtaining database connections and closing resources.
+ * @author Mingzi Xu
+ */
 public class JDBCUtilsTest {
-
+	 /**
+     * Tests the getConnection method of the JDBCUtils class.
+     * Verifies that a non-null connection is obtained and is open.
+     */
     @Test
     public void testGetConnection() {
         try {
@@ -19,7 +26,10 @@ public class JDBCUtilsTest {
             Assertions.fail("Failed to get connection: " + e.getMessage());
         }
     }
-
+    /**
+     * Tests the close method of the JDBCUtils class for closing ResultSet, PreparedStatement, and Connection.
+     * Verifies that closing resources does not throw exceptions if they are null.
+     */
     @Test
     public void testCloseResultSetPreparedStatementConnection() {
         // Create mocks for ResultSet, PreparedStatement, and Connection
@@ -39,7 +49,10 @@ public class JDBCUtilsTest {
             Assertions.fail("Failed to close connection: " + e.getMessage());
         }
     }
-
+    /**
+     * Tests the close method of the JDBCUtils class for closing PreparedStatement and Connection.
+     * Verifies that closing resources does not throw exceptions if they are null.
+     */
     @Test
     public void testClosePreparedStatementConnection() {
         // Create mocks for PreparedStatement and Connection
@@ -58,7 +71,10 @@ public class JDBCUtilsTest {
             Assertions.fail("Failed to close connection: " + e.getMessage());
         }
     }
-
+    /**
+     * Tests the close method of the JDBCUtils class for closing Connection.
+     * Verifies that closing resources does not throw exceptions if they are null.
+     */
     @Test
     public void testCloseConnection() {
         // Create mock for Connection
