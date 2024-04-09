@@ -7,12 +7,16 @@ import org.junit.jupiter.api.Test;
 
 import dao.UserDao;
 import food.User;
-
+/**
+ * The UserDaoTest class contains test cases for the methods in the UserDao class.
+ */
 class UserDaoTest {
 
 	UserDao userDao;
 	
-	
+    /**
+     * Tests the getUserByNameAndPassword method of the UserDao class.
+     */
 	@Test
 	void testGetUserByNameAndPassword() {
 
