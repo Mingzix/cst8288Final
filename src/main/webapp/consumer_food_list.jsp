@@ -98,11 +98,24 @@ Key Features:
             text-align: right;
             margin-top: 20px;
         }
+        #topContainer {
+	      display: flex;
+	      justify-content: space-between;
+	      align-items: center;
+	      margin:auto;
+	      margin-bottom: 20px;
+	       width: 80%;
+	    }
     </style>
 </head>
 <body>
-<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
-    <p>last login: ${user.lastLogin}</p>
+<div id="topContainer">
+	<div id="topButtons">
+	  <button onclick="history.go(-1);">Go Back</button>
+	</div>
+	<div id="loginoutdiv"><a id="loginoutBtn" href="LogoutServlet"><button>log out</button></a>&nbsp; &nbsp; &nbsp;username: ${user.name} &nbsp; &nbsp; &nbsp;
+	    <p>last login: ${user.lastLogin}</p>
+	</div>
 </div>
 <h1>Food List</h1>
 <p>${msg}</p>
