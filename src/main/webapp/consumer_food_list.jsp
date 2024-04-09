@@ -243,6 +243,7 @@ Key Features:
                 let money = price1*inputValue*discount1;
                 window.location.href="AddOrderServlet?fid="+fid1+"&num="+inputValue+"&money="+money;
                 modal.style.display = "none";
+                alert("The total price of this order is : $" + money);
             }
         });
         // Event listeners for the confirm and cancel buttons in the subscription confirmation modal
