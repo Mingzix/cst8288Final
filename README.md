@@ -86,13 +86,12 @@ This Food Wate Platform uses the 3-Tier Architecture model, a common methodology
 
     Responsible for interacting with users through a user-friendly interface. 
     
-    Implements the Model-View-Controller (MVC) design pattern for separation of concerns. 
     
     Components: 
     
-      User interface elements for user registration, login/logout, browsing surplus food items, and subscribing to surplus food alerts. 
+      User interface elements for user registration, login/logout, browsing food items, and subscribing to surplus food alerts. 
       
-      Views for displaying inventory management interfaces for retailers, claiming food interfaces for charitable organizations, and purchasing interfaces for consumers. 
+      Views for displaying food list interfaces for retailers, claiming food interfaces for charitable organizations, and purchasing interfaces for consumers. 
   
   
   _Business Layer_
@@ -120,15 +119,14 @@ This Food Wate Platform uses the 3-Tier Architecture model, a common methodology
   
     Stores and manages persistent data used by the application. 
     
-    Utilizes a relational database management system (RDBMS) named "FWRP" for data storage and management. 
+    Utilizes a relational database management system (RDBMS) named "fwdb" for data storage and management. 
     
     Components: 
     
-      Database schema (FWRP) containing tables/entities to store user information, inventory data, claimed food items, and subscription preferences. 
+      Database schema (fwdb) containing tables/entities to store information for user, food, store, food type and subscription,. 
     
       Entity-Relationship Diagram (ERD) illustrating the relationships between different entities. 
       
-      Physical/Logical Data Model outlining the structure of the database schema. 
 
 
 **Main Components**
@@ -136,14 +134,12 @@ This Food Wate Platform uses the 3-Tier Architecture model, a common methodology
   User Management Component 
     
     Responsible for user registration, login, and authentication. 
-    
-    Manages user accounts and permissions. 
-  
+      
   Inventory Management Component 
   
-    Handles inventory operations for retailers, such as adding, updating, and listing surplus food items. 
+    Handles food inventory operations for retailers, such as adding, editing.
     
-    Tracks item quantities, expiration dates, and availability status. 
+    Includes item quantities, expiration dates, and availability status, discount. 
   
   Claiming Food Component 
     
@@ -159,7 +155,7 @@ This Food Wate Platform uses the 3-Tier Architecture model, a common methodology
   
   Surplus Food Alert Component 
   
-    Manages user subscriptions for receiving surplus food alerts based on location, communication method, and food preferences. 
+    Manages user subscriptions for receiving surplus food alerts based on location, and food preferences. 
     
     Sends automatic notifications to subscribed users when retailers list surplus food items. 
 
@@ -189,13 +185,13 @@ This Food Wate Platform uses the 3-Tier Architecture model, a common methodology
     Description: Enables retailers to manage their inventory of food items, including adding new items, updating quantities, and setting expiration 
 dates for each item. 
     
-    Use Case 5: Surplus Food Identification 
+    Use Case 5: Surplus Food for Sale 
    
-    Description: Allows retailers to identify and flag surplus food items that are nearing expiration or are more than demanded. 
+    Description: Allows retailers to update the discounts that are nearing expiration or are more than demanded. 
     
     Use Case 6: Listing Surplus Food Items 
     
-    Description: Enables retailers to list surplus food items on the platform for donation or sale at a discounted price. 
+    Description: Enables retailers to list surplus food items on the platform for donation. 
 
   
   Charitable Organizations 
@@ -272,6 +268,13 @@ https://github.com/Mingzix/cst8288Final/blob/main/erd.png
  
 **References**
 
+Sending Email in Java: https://javatpoint.com/example-of-sending-email-using-java-mail-api 
+
+JavaMail Example - Send Mail in Java using SMTP: https://www.digitalocean.com/community/tutorials/javamail-example-send-mail-in-java-smtp 
+
+Auto-generated key: https://stackoverflow.com/questions/14844864/jdbc-preparedstatement-always-returns-1-as-auto-generated-key 
+
+ 
 
 **List of Figures**
   
